@@ -7,14 +7,16 @@
     <title>📅 decal</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Space+Mono&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Space+Mono&display=swap"
+        rel="stylesheet">
+
     <!-- Open Graph Protocol meta tags for sharing preview -->
     <meta property="og:title" content="decal">
-    <meta property="og:description" content="Decimal Calender">
-    <meta property="og:image" content="https://private-user-images.githubusercontent.com/35961071/293473723-88fd327e-a75b-49af-9447-7697f70c3fbe.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MDM5NTk0OTAsIm5iZiI6MTcwMzk1OTE5MCwicGF0aCI6Ii8zNTk2MTA3MS8yOTM0NzM3MjMtODhmZDMyN2UtYTc1Yi00OWFmLTk0NDctNzY5N2Y3MGMzZmJlLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyMzEyMzAlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjMxMjMwVDE3NTk1MFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTdhZTRiMDM3NmVhMWU2YjFjZDNhZjRjYmZiNzNlZDg2MDdjM2EyMDYwOWU1NmZlYjM0YTQ2ODc5Y2E2YWNlNWUmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.95wYYoQJptDgXHyAwmDPeejwUbneustOBSlfahFexy0">
+    <meta property="og:description" content="Decimal Calendar">
+    <meta property="og:image"
+        content="https://private-user-images.githubusercontent.com/35961071/293473723-88fd327e-a75b-49af-9447-7697f70c3fbe.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MDM5NTk0OTAsIm5iZiI6MTcwMzk1OTE5MCwicGF0aCI6Ii8zNTk2MTA3MS8yOTM0NzM3MjMtODhmZDMyN2UtYTc1Yi00OWFmLTk0NDctNzY5N2Y3MGMzZmJlLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyMzEyMzAlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjMxMjMwVDE3NTk1MFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTdhZTRiMDM3NmVhMWU2YjFjZDNhZjRjYmZiNzNlZDg2MDdjM2EyMDYwOWU1NmZlYjM0YTQ2ODc5Y2E2YWNlNWUmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.95wYYoQJptDgXHyAwmDPeejwUbneustOBSlfahFexy0">
     <meta property="og:url" content="https://mynamearnav.github.io/decal/">
-    
+
     <style>
         body {
             font-family: 'Oswald', sans-serif;
@@ -32,6 +34,27 @@
             font-size: 2em;
             margin-bottom: 20px;
             color: #333;
+            position: relative;
+        }
+
+        .info-button {
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px;
+            cursor: pointer;
+            border-radius: 4px;
+            position: absolute;
+            left: 10px;
+            /* Adjust the left position as needed */
+            top: 5%;
+            /* Adjust the top position as needed */
+            transform: translateY(-50%);
         }
 
         table {
@@ -75,7 +98,44 @@
         button:hover {
             background-color: #45a049;
         }
-        
+
+        .info-popup {
+            display: none;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .info-content {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 500;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .digits {
+            font-family: 'Space Mono', monospace;
+        }
+
+        .close-button {
+            background-color: #e74c3c;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin-top: 10px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
         @media (max-width: 700px) {
             table {
                 font-size: 0.8em;
@@ -88,15 +148,27 @@
             }
         }
     </style>
+
 </head>
 
 <body>
 
     <h2 class="calendar-heading"></h2>
+    <button class="info-button" onclick="showInfo()">ℹ</button>
 
     <button onclick="changeMonth(-1)">←</button>
     <table id="calendar"></table>
     <button onclick="changeMonth(1)">→</button>
+
+    <div class="info-popup" id="infoPopup">
+        <div class="info-content">
+            <p>This is a decimal calendar. It represents each day of the month as a decimal fraction. For example for
+                April(4th month) 19 we get
+            <div class="digits">4/19 = 0.2105</div>
+            </p>
+            <button class="close-button" onclick="closeInfo()">Close</button>
+        </div>
+    </div>
 
     <script>
         let currentMonth = new Date().getMonth() + 1;
@@ -157,6 +229,16 @@
             }
 
             generateCalendar();
+        }
+
+        function showInfo() {
+            const infoPopup = document.getElementById("infoPopup");
+            infoPopup.style.display = "flex";
+        }
+
+        function closeInfo() {
+            const infoPopup = document.getElementById("infoPopup");
+            infoPopup.style.display = "none";
         }
 
         generateCalendar();
